@@ -43,25 +43,25 @@ describe Saver do
 
   describe '#savers' do
     it "should accurately save array of savers" do
-      single_test.class.savers.should == { :data => :to_s }
-      double_test.class.savers.should == { :data => :to_s, :single_test => :to_s }
+      expect(single_test.class.savers).to eq({:data => :to_s})
+      expect(double_test.class.savers).to eq({:data => :to_s, :single_test => :to_s})
     end
   end
 
   describe '#save_attribute' do
     it "should work" do
-      single_test.data_saver.should == '5'
+      expect(single_test.data_saver).to eq '5'
     end
 
     it "should work with custom method" do
-      method_test.single_test_saver.should == 'OMG LONG Number 5'
+      expect(method_test.single_test_saver).to eq 'OMG LONG Number 5'
     end
   end
 
   describe '#save_attributes' do
     it "should work" do
-      double_test.data_saver.should == '5'
-      double_test.single_test_saver.should == 'Number 5'
+      expect(double_test.data_saver).to eq '5'
+      expect(double_test.single_test_saver).to eq 'Number 5'
     end
   end
 end
